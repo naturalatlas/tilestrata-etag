@@ -1,0 +1,38 @@
+{
+  "name": "tilestrata-etag",
+  "version": "0.0.0",
+  "description": "A TileStrata plugin for conditional GET support (ETags)",
+  "author": "Brian Reavis <brian@naturalatlas.com>",
+  "license": "Apache-2.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha -R list && eslint --fix index.js",
+    "test-ci": "mocha -R tap && eslint index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/naturalatlas/tilestrata-etag.git"
+  },
+  "keywords": [
+    "tilestrata",
+    "tilestrata-plugin",
+    "tilestrata-reshook",
+    "etag",
+    "conditional"
+  ],
+  "bugs": {
+    "url": "https://github.com/naturalatlas/tilestrata-etag/issues"
+  },
+  "homepage": "https://github.com/naturalatlas/tilestrata-etag",
+  "dependencies": {
+    "etag": "^1.7.0",
+    "filesize-parser": "^1.3.0",
+  },
+  "devDependencies": {
+    "chai": "^3.3.0",
+    "mocha": "^2.3.3"
+  },
+  "peerDependencies": {
+    "tilestrata": ">= 2.0.0"
+  }
+}
