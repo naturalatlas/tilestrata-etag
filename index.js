@@ -2,9 +2,13 @@ var etag = require('etag');
 var filesizeParser = require('filesize-parser');
 
 module.exports = function(options) {
-	var max_length = (options && options.limit) || 512 * 1024;
+	var max_length = options && options.limit;
 	if (typeof max_length === 'string') {
 		max_length = filesizeParser(max_length);
+	} else if (max_length === null) {
+		max_length = Infinity;
+	} else {
+		max_length = 512 * 1024;
 	}
 
 	return {
