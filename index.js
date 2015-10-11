@@ -7,7 +7,7 @@ module.exports = function(options) {
 		max_length = filesizeParser(max_length);
 	} else if (max_length === null) {
 		max_length = Infinity;
-	} else {
+	} else if (!max_length) {
 		max_length = 512 * 1024;
 	}
 

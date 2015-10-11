@@ -35,7 +35,7 @@ describe('"tilestrata-etag"', function() {
 		var req = tilestrata.TileRequest.parse('/layer/3/2/1/tile.bin');
 		server.layer('layer').route('tile.bin')
 			.use(dummy_provider(1024*300))
-			.use(etag({limit: '200kb'}));
+			.use(etag({limit: 200*1024}));
 
 		server.serve(req, dummy_http, function(status, buffer, headers) {
 			assert.equal(status, 200);
