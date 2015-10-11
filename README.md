@@ -12,7 +12,7 @@ By default, the plugin will skip anything that's bigger than 512kb. This is beca
 ```js
 var tilestrata = require('tilestrata');
 var etag = require('tilestrata-etag');
-var strata = tilestrata.createServer();
+var strata = tilestrata();
 
 // etags enabled for responses up to 512kb
 strata.layer('mylayer').route('t.png')
