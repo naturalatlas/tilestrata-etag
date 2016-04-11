@@ -16,9 +16,14 @@ module.exports = function(options) {
 		reshook: function(server, tile, req, res, result, callback) {
 			var status_type = result.status / 100 | 0;
 			if (status_type === 2 && result.buffer && result.buffer.length < max_length) {
-				result.headers['ETag'] = etag(result.buffer);
+				var resultEtag = result.headers['etag'];
+				if (!resultEtag) {
+					resultEtag = etag(result.buffer);
+					result.headers['ETag'] = resultEtag;
+				}
+
 				var ifnonematch = req.headers['if-none-match'];
-				if (ifnonematch && ifnonematch === result.headers['ETag']) {
+				if (ifnonematch && ifnonematch === resultEtag) {
 					result.status = 304;
 					result.buffer = new Buffer([]);
 				}
