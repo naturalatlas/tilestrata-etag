@@ -16,7 +16,7 @@ module.exports = function(options) {
 		reshook: function(server, tile, req, res, result, callback) {
 			var status_type = result.status / 100 | 0;
 			if (status_type === 2 && result.buffer && result.buffer.length < max_length) {
-				var resultEtag = result.headers['etag'];
+				var resultEtag = result.headers['etag'] || result.headers['ETag'];
 				if (!resultEtag) {
 					resultEtag = etag(result.buffer);
 					result.headers['ETag'] = resultEtag;
